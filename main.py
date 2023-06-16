@@ -9,8 +9,6 @@ import ttkbootstrap
 from PIL import Image, ImageTk
 
 # Liste des extensions de fichiers qui vont être lues
-# Vous avez la possibilité d'ajouter des nouvelles exentions à la suite.
-# Les extensions qui ne seront pas listées seront ignorées
 EXTENSIONS = ['.js', '.env', '.py', '.css', '.html', '.txt', '.json', '.yaml', '.yml', '.ini']
 
 def lire_fichier(chemin):
