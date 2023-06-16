@@ -27,10 +27,6 @@ Vous pouvez installer les packages requis en utilisant la commande suivante :
 
 Assurez-vous d'exécuter cette commande dans un environnement virtuel ou avec les privilèges administratifs si nécessaire.
 
-## Auteur
-
-André Monteiro
-
 ## Patchnotes
 
 ### Version 1.1 (16 juin 2023)
