@@ -1,5 +1,4 @@
 ![Cover](https://github.com/Lumantis/CodeToWord/blob/main/Codetoword.png)
-
 # Code To Docx
 
 Ce programme permet de créer un document Word contenant le contenu des fichiers de code d'un répertoire sélectionné.
