@@ -1,17 +1,18 @@
 import os
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from tqdm import tqdm
-import ttkbootstrap
+from ttkbootstrap import Style, Button, Label
 from PIL import Image, ImageTk
 
 # Liste des extensions de fichiers qui vont être lues
 EXTENSIONS = ['.js', '.env', '.py', '.css', '.html', '.txt', '.json', '.yaml', '.yml', '.ini']
+ERROR_MESSAGE_SELECTION = "Aucun répertoire sélectionné. Veuillez d'abord sélectionner un répertoire."
 
-def lire_fichier(chemin):
+def lire_fichier(chemin: str) -> str:
     try:
         with open(chemin, "r", encoding='utf-8') as fichier:
             return fichier.read()
@@ -27,7 +28,11 @@ def selectionner_repertoire():
 
 def creer_document():
     if not app.repertoire:
-        messagebox.showinfo("Aucun répertoire sélectionné", "Veuillez d'abord sélectionner un répertoire.")
+        messagebox.showinfo("Aucun répertoire sélectionné", ERROR_MESSAGE_SELECTION)
+        return
+
+    if not os.listdir(app.repertoire):
+        messagebox.showinfo("Répertoire vide", "Le répertoire sélectionné est vide. Veuillez sélectionner un répertoire contenant des fichiers.")
         return
 
     doc = Document()
@@ -63,10 +68,15 @@ def creer_document():
     if not chemin_fichier:  # L'utilisateur a annulé la boîte de dialogue de sauvegarde
         return
 
-    doc.save(chemin_fichier)
-    messagebox.showinfo("Succès", "Document créé avec succès !")
+    try:
+        doc.save(chemin_fichier)
+        messagebox.showinfo("Succès", "Document créé avec succès !")
+    except Exception as e:
+        messagebox.showerror("Erreur", f"Erreur lors de la sauvegarde du document : {e}")
+    finally:
+        app.quit()
 
-app = ttkbootstrap.Style().master
+app = Style().master
 app.geometry("600x400")  # Taille de la fenêtre
 app.title("Code To Docx")  # Titre de la fenêtre
 app.repertoire = None
@@ -75,17 +85,17 @@ app.repertoire = None
 logo = Image.open("Codetoword.png")
 logo = logo.resize((30, 30), Image.LANCZOS)
 photo_logo = ImageTk.PhotoImage(logo)
-logo_label = ttkbootstrap.Label(image=photo_logo)
+logo_label = Label(image=photo_logo)
 logo_label.image = photo_logo
 logo_label.pack(pady=10)
 
-label_repertoire = ttkbootstrap.Label(app, text="Aucun répertoire sélectionné")
+label_repertoire = Label(app, text="Aucun répertoire sélectionné")
 label_repertoire.pack(padx=10, pady=10)
 
-bouton_selectionner_repertoire = ttkbootstrap.Button(app, text="Sélectionner un répertoire", command=selectionner_repertoire)
+bouton_selectionner_repertoire = Button(app, text="Sélectionner un répertoire", command=selectionner_repertoire)
 bouton_selectionner_repertoire.pack(padx=10, pady=10)
 
-bouton_creer_document = ttkbootstrap.Button(app, text="Créer Document", command=creer_document, state="disabled")
+bouton_creer_document = Button(app, text="Créer Document", command=creer_document, state="disabled")
 bouton_creer_document.pack(padx=10, pady=10)
 
 # Ajouter un menu
