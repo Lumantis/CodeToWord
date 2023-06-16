@@ -46,6 +46,6 @@ André Monteiro
 - Utilisation de la méthode `filetypes` de `asksaveasfilename` pour spécifier les types de fichiers autorisés.
 - Utilisation d'une feuille de style pour la fenêtre principale.
 
-### Version 1.0 (15 juin 2023)
+### Version 1.0 (12 mai 2023)
 
 - Fonctionnalité de base : création d'un document Word à partir des fichiers de code d'un répertoire sélectionné.
