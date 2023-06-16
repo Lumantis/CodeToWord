@@ -29,7 +29,7 @@ Assurez-vous d'exécuter cette commande dans un environnement virtuel ou avec le
 
 ## Patchnotes
 
-### Version 1.2 (16 juin 2023)
+### Version 1.1 (16 juin 2023)
 
 - Optimisation du code pour améliorer les performances et la lisibilité.
 - Utilisation d'imports spécifiques pour les modules utilisés.
@@ -42,6 +42,6 @@ Assurez-vous d'exécuter cette commande dans un environnement virtuel ou avec le
 - Utilisation d'une feuille de style pour l'interface utilisateur.
 - Amélioration de la gestion des erreurs lors de la sauvegarde du document.
 
-### Version 1.1 (15 juin 2023)
+### Version 1.0 (15 juin 2023)
 
 - Fonctionnalité de base : création d'un document Word à partir des fichiers de code d'un répertoire sélectionné.
